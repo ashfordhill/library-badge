@@ -2,6 +2,8 @@ name: Scrape SWAN Reading History
 on:
   schedule:
     - cron: "0 8 * * *"   # daily at 8 AM UTC; adjust as needed
+  push:
+    branches: [ main ]
   workflow_dispatch: {}
 
 jobs:
