@@ -13,6 +13,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -45,9 +47,11 @@ jobs:
           LIB_USER: ${{ secrets.LIB_USER }}
           LIB_PASS: ${{ secrets.LIB_PASS }}
       - name: Commit JSON
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config user.name "badge-bot"
-          git config user.email "badge-bot@users.noreply.github.com"
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
           git add public/library.json
           git commit -m "update library.json [skip ci]" || echo "no changes"
           git push
