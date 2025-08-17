@@ -21,7 +21,7 @@ async function testScraper() {
     console.log('✅ Scraper completed successfully');
     
     // Check if the JSON file was created
-    const jsonContent = await fs.readFile('public/library.json', 'utf8');
+    const jsonContent = await fs.readFile('public/current.json', 'utf8');
     const data = JSON.parse(jsonContent);
     
     console.log('📚 Latest book data:');

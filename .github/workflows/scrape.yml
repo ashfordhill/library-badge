@@ -52,6 +52,6 @@ jobs:
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          git add public/library.json
-          git commit -m "update library.json [skip ci]" || echo "no changes"
+          git add public/current.json public/history.json
+          git commit -m "update current book and history [skip ci]" || echo "no changes"
           git push

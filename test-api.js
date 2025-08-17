@@ -24,7 +24,7 @@ async function testAPI() {
 
     const body = {
       schemaVersion: 1,
-      label: "last read",
+      label: "borrowed",
       message,
       color: title ? "blue" : "inactive",
       namedLogo: "bookstack"
@@ -54,7 +54,7 @@ async function testAPI() {
 
     const sampleBody = {
       schemaVersion: 1,
-      label: "last read",
+      label: "borrowed",
       message: sampleMessage,
       color: sampleTitle ? "blue" : "inactive",
       namedLogo: "bookstack"

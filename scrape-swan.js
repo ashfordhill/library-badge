@@ -176,6 +176,15 @@ async function run() {
 
     console.log(`Found: ${title} by ${author}`);
 
+    // Check if this is different from current data
+    let existingData = null;
+    try {
+      const existingContent = await fs.readFile("public/current.json", "utf8");
+      existingData = JSON.parse(existingContent);
+    } catch (e) {
+      console.log("No existing current.json found");
+    }
+
     const payload = {
       scrapedAt: new Date().toISOString(),
       title,
@@ -183,10 +192,49 @@ async function run() {
       source: "ReadingHistory:firstRow"
     };
 
-    await fs.mkdir("public", { recursive: true });
-    await fs.writeFile("public/library.json", JSON.stringify(payload, null, 2), "utf8");
+    // If the title is different, save the old one to history
+    if (existingData && existingData.title && existingData.title !== title) {
+      console.log(`New book detected! Previous: "${existingData.title}"`);
+      
+      // Load existing history
+      let history = [];
+      try {
+        const historyContent = await fs.readFile("public/history.json", "utf8");
+        const historyData = JSON.parse(historyContent);
+        history = historyData.books || [];
+      } catch (e) {
+        console.log("No existing history.json found, creating new one");
+      }
 
-    console.log("Successfully updated library.json");
+      // Add the previous book to the top of history (avoid duplicates)
+      const isDuplicate = history.some(book => book.title === existingData.title);
+      if (!isDuplicate) {
+        history.unshift({
+          title: existingData.title,
+          author: existingData.author,
+          scrapedAt: existingData.scrapedAt,
+          archivedAt: new Date().toISOString()
+        });
+        
+        // Keep only the last 20 books in history
+        history = history.slice(0, 20);
+        
+        // Save updated history
+        const historyPayload = {
+          lastUpdated: new Date().toISOString(),
+          totalBooks: history.length,
+          books: history
+        };
+        
+        await fs.writeFile("public/history.json", JSON.stringify(historyPayload, null, 2), "utf8");
+        console.log(`Added "${existingData.title}" to history`);
+      }
+    }
+
+    await fs.mkdir("public", { recursive: true });
+    await fs.writeFile("public/current.json", JSON.stringify(payload, null, 2), "utf8");
+
+    console.log("Successfully updated current.json");
 
   } finally {
     await browser.close();
@@ -205,8 +253,8 @@ run().catch(async (e) => {
   
   try {
     await fs.mkdir("public", { recursive: true });
-    await fs.writeFile("public/library.json", JSON.stringify(payload, null, 2), "utf8");
-    console.log("Wrote fallback library.json");
+    await fs.writeFile("public/current.json", JSON.stringify(payload, null, 2), "utf8");
+    console.log("Wrote fallback current.json");
   } catch (writeError) {
     console.error("Failed to write fallback JSON:", writeError);
   }
