@@ -41,7 +41,7 @@
     
     <div class="badge-preview">
         <h3>Badge Preview:</h3>
-        <img id="badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Flibrary-badge.pages.dev%2Fapi%2Flibrary-badge&style=flat-square" alt="Library Badge" onload="updateBadgeUrl()">
+        <img id="badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Flibrary-badge.pages.dev%2Fapi%2Flibrary-badge&style=flat-square&logo=gitbook&logoColor=4682B4" alt="Library Badge" onload="updateBadgeUrl()">
     </div>
 
     <div class="endpoint">
@@ -68,11 +68,11 @@
             const currentDomain = window.location.hostname;
             const badge = document.getElementById('badge');
             const encodedUrl = encodeURIComponent(`https://${currentDomain}/api/library-badge`);
-            badge.src = `https://img.shields.io/endpoint?url=${encodedUrl}&style=flat-square`;
+            badge.src = `https://img.shields.io/endpoint?url=${encodedUrl}&style=flat-square&logo=gitbook&logoColor=4682B4`;
             
             // Update the usage example too
             const usageCode = document.querySelector('pre code');
-            usageCode.textContent = `![reading](https://img.shields.io/endpoint?url=${encodedUrl}&style=flat-square)`;
+            usageCode.textContent = `![reading](https://img.shields.io/endpoint?url=${encodedUrl}&style=flat-square&logo=gitbook&logoColor=4682B4)`;
         }
 
         // Load current library data
