@@ -53,30 +53,54 @@ async function run() {
     // Use a more robust approach for login
     await page.click("#loginFormSubmit");
     
-    // Wait for either successful login (redirect) or error message
-    try {
-      await page.waitForURL(url => !url.includes('/MyAccount/Home'), { timeout: 15000 });
-      console.log("Login successful, navigating to reading history...");
-      await debugScreenshot('03-login-success');
-    } catch (urlError) {
-      // Check if we're still on login page or got redirected somewhere else
-      const currentUrl = page.url();
-      console.log("Current URL after login attempt:", currentUrl);
-      await debugScreenshot('03-login-attempt');
-      
-      // Check for error messages
-      const errorMessage = await page.locator('.alert-danger, .error, .login-error').first().textContent().catch(() => null);
-      if (errorMessage) {
-        throw new Error(`Login failed: ${errorMessage}`);
-      }
-      
-      // If no error message but still on login page, credentials might be wrong
-      if (currentUrl.includes('/MyAccount/Home')) {
-        throw new Error("Login failed: Still on login page, check credentials");
-      }
-      
-      console.log("Login may have succeeded, continuing...");
+    // Wait for login to complete and check if successful
+    console.log("Waiting for login to complete...");
+    await page.waitForTimeout(3000); // Give login time to process
+    
+    const currentUrl = page.url();
+    console.log("Current URL after login attempt:", currentUrl);
+    await debugScreenshot('03-login-attempt');
+    
+    // Check for error messages first
+    const errorMessage = await page.locator('.alert-danger, .error, .login-error, .alert').first().textContent().catch(() => null);
+    if (errorMessage && errorMessage.toLowerCase().includes('error')) {
+      throw new Error(`Login failed: ${errorMessage}`);
     }
+    
+    // Check if we're logged in by looking for account-specific elements
+    // After login, there should be logout links or account navigation
+    const loggedInIndicators = [
+      'a[href*="logout"]',
+      'a[href*="Logout"]', 
+      '.logoutOptions',
+      'text=Logout',
+      'text=Log Out',
+      'text=My Account',
+      '.myAccountMenu'
+    ];
+    
+    let isLoggedIn = false;
+    for (const indicator of loggedInIndicators) {
+      const count = await page.locator(indicator).count();
+      if (count > 0) {
+        console.log(`Login success detected via: ${indicator}`);
+        isLoggedIn = true;
+        break;
+      }
+    }
+    
+    if (!isLoggedIn) {
+      // Check if login form is still visible (would indicate failed login)
+      const loginFormVisible = await page.locator('#loginFormSubmit').count();
+      if (loginFormVisible > 0) {
+        throw new Error("Login failed: Login form still visible, check credentials");
+      }
+      
+      console.log("Login status unclear, but no login form visible - continuing...");
+    }
+    
+    console.log("Login appears successful, navigating to reading history...");
+    await debugScreenshot('03-login-success');
 
     // 2) Reading History
     console.log("Navigating to reading history page...");

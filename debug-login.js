@@ -86,7 +86,35 @@ async function debugLogin() {
       }
     }
     
-    console.log("9. Keeping browser open for 10 seconds for manual inspection...");
+    // Check for login success indicators
+    console.log("9. Checking for login success indicators:");
+    const loggedInIndicators = [
+      'a[href*="logout"]',
+      'a[href*="Logout"]', 
+      '.logoutOptions',
+      'text=Logout',
+      'text=Log Out',
+      'text=My Account',
+      '.myAccountMenu'
+    ];
+    
+    for (const indicator of loggedInIndicators) {
+      const count = await page.locator(indicator).count();
+      console.log(`   - ${indicator}: ${count > 0 ? '✅ Found' : '❌ Not found'}`);
+    }
+    
+    // Check if login form is still visible
+    const loginFormVisible = await page.locator('#loginFormSubmit').count();
+    console.log(`   - Login form still visible: ${loginFormVisible > 0 ? '❌ Yes (login failed)' : '✅ No (login likely succeeded)'}`);
+    
+    // Try to navigate to reading history
+    console.log("10. Testing navigation to reading history...");
+    await page.goto("https://ops.swanlibraries.net/MyAccount/ReadingHistory");
+    await page.waitForTimeout(2000);
+    console.log("   - Reading history URL:", page.url());
+    console.log("   - Reading history title:", await page.title());
+    
+    console.log("11. Keeping browser open for 10 seconds for manual inspection...");
     await page.waitForTimeout(10000);
     
   } catch (error) {
