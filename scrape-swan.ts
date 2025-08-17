@@ -41,20 +41,46 @@ async function run() {
     // 2) Reading History
     await page.goto(HISTORY, { waitUntil: "networkidle" });
 
-    // First row container (your screenshot shows `.row.result`)
+    // Wait for the reading history to load
+    await page.waitForSelector('.row.result', { timeout: 10000 });
+
+    // First row container (from screenshot: `.row.result` with specific ID)
     const firstRow = page.locator(".row.result").first();
 
-    // Title: inside `.result-title a.title`
-    const title = (await firstRow.locator(".result-title a.title").first().textContent())
-                    ?.trim() || null;
+    // Debug: log the HTML structure
+    const rowHTML = await firstRow.innerHTML();
+    console.log('First row HTML:', rowHTML.substring(0, 500) + '...');
 
-    // Author: label/value pattern -> find the value next to label "Author"
-    // This uses :has-text in Playwright to find the label div then select the nearest value link.
-    const author = (await firstRow
-        .locator('.result-label:has-text("Author")')
-        .locator('xpath=following-sibling::*[contains(@class,"result-value")]//a')
-        .first()
-        .textContent())?.trim() || null;
+    // Title: inside `.result-title.notranslate a.title`
+    let title = null;
+    try {
+      title = (await firstRow.locator(".result-title.notranslate a.title").first().textContent())?.trim() || null;
+      if (!title) {
+        // Fallback: try without .notranslate
+        title = (await firstRow.locator(".result-title a.title").first().textContent())?.trim() || null;
+      }
+    } catch (e) {
+      console.log('Title extraction failed:', e.message);
+    }
+
+    // Author: find the result-label with "Author" text, then get the adjacent result-value link
+    let author = null;
+    try {
+      // Try the xpath approach first
+      author = (await firstRow
+          .locator('.result-label:has-text("Author")')
+          .locator('xpath=following-sibling::div[contains(@class,"result-value")]//a')
+          .first()
+          .textContent())?.trim() || null;
+      
+      if (!author) {
+        // Fallback: try a more direct approach
+        const authorRow = firstRow.locator('.row').filter({ hasText: 'Author' });
+        author = (await authorRow.locator('.result-value a').first().textContent())?.trim() || null;
+      }
+    } catch (e) {
+      console.log('Author extraction failed:', e.message);
+    }
 
     console.log(`Found: ${title} by ${author}`);
 

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Badge</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+            color: #333;
+        }
+        .badge-preview {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .endpoint {
+            background: #e8f4f8;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        .status {
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .status.success { background: #d4edda; color: #155724; }
+        .status.error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>📚 Library Badge</h1>
+    <p>A Shields IO badge that displays your latest checked out library book from SWAN Libraries.</p>
+    
+    <div class="badge-preview">
+        <h3>Badge Preview:</h3>
+        <img id="badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Flibrary-badge.pages.dev%2Fapi%2Flibrary-badge&style=flat-square" alt="Library Badge" onload="updateBadgeUrl()">
+    </div>
+
+    <div class="endpoint">
+        <h3>Badge Endpoint:</h3>
+        <a href="/api/library-badge" target="_blank">/api/library-badge</a>
+    </div>
+
+    <div class="endpoint">
+        <h3>Raw Data:</h3>
+        <a href="/library.json" target="_blank">/library.json</a>
+    </div>
+
+    <div id="status" class="status">
+        <h3>Current Status:</h3>
+        <p>Loading...</p>
+    </div>
+
+    <h3>Usage:</h3>
+    <p>Add this to your README.md:</p>
+    <pre><code>![reading](https://img.shields.io/endpoint?url=https%3A%2F%2Flibrary-badge.pages.dev%2Fapi%2Flibrary-badge&style=flat-square)</code></pre>
+
+    <script>
+        function updateBadgeUrl() {
+            const currentDomain = window.location.hostname;
+            const badge = document.getElementById('badge');
+            const encodedUrl = encodeURIComponent(`https://${currentDomain}/api/library-badge`);
+            badge.src = `https://img.shields.io/endpoint?url=${encodedUrl}&style=flat-square`;
+            
+            // Update the usage example too
+            const usageCode = document.querySelector('pre code');
+            usageCode.textContent = `![reading](https://img.shields.io/endpoint?url=${encodedUrl}&style=flat-square)`;
+        }
+
+        // Load current library data
+        fetch('/library.json')
+            .then(response => response.json())
+            .then(data => {
+                const status = document.getElementById('status');
+                const lastUpdate = new Date(data.scrapedAt).toLocaleString();
+                
+                if (data.title) {
+                    status.className = 'status success';
+                    status.innerHTML = `
+                        <h3>Current Status: ✅ Active</h3>
+                        <p><strong>Title:</strong> ${data.title}</p>
+                        <p><strong>Author:</strong> ${data.author || 'Unknown'}</p>
+                        <p><strong>Last Updated:</strong> ${lastUpdate}</p>
+                    `;
+                } else {
+                    status.className = 'status error';
+                    status.innerHTML = `
+                        <h3>Current Status: ⚠️ No Data</h3>
+                        <p>No library book data found.</p>
+                        <p><strong>Last Checked:</strong> ${lastUpdate}</p>
+                    `;
+                }
+            })
+            .catch(error => {
+                const status = document.getElementById('status');
+                status.className = 'status error';
+                status.innerHTML = `
+                    <h3>Current Status: ❌ Error</h3>
+                    <p>Failed to load library data: ${error.message}</p>
+                `;
+            });
+
+        // Update badge URL when page loads
+        updateBadgeUrl();
+    </script>
+</body>
+</html>
