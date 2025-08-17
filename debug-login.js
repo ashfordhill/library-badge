@@ -35,7 +35,7 @@ async function debugLogin() {
     console.log("4. Checking for login elements...");
     const usernameExists = await page.locator("#username").count();
     const passwordExists = await page.locator("#password").count();
-    const loginExists = await page.locator("#login").count();
+    const loginExists = await page.locator("#loginFormSubmit").count();
     
     console.log(`   - Username field: ${usernameExists > 0 ? '✅ Found' : '❌ Not found'}`);
     console.log(`   - Password field: ${passwordExists > 0 ? '✅ Found' : '❌ Not found'}`);
@@ -67,7 +67,7 @@ async function debugLogin() {
     await page.fill("#password", PASS);
     
     console.log("6. Clicking login...");
-    await page.click("#login");
+    await page.click("#loginFormSubmit");
     
     console.log("7. Waiting for navigation...");
     await page.waitForTimeout(3000); // Wait 3 seconds

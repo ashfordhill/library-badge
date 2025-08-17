@@ -42,7 +42,7 @@ async function run() {
     // Wait for login form to be visible
     await page.waitForSelector("#username", { timeout: 10000 });
     await page.waitForSelector("#password", { timeout: 10000 });
-    await page.waitForSelector("#login", { timeout: 10000 });
+    await page.waitForSelector("#loginFormSubmit", { timeout: 10000 });
     
     console.log("Login form found, filling credentials...");
     await page.fill("#username", USER);
@@ -51,7 +51,7 @@ async function run() {
     
     console.log("Clicking login button...");
     // Use a more robust approach for login
-    await page.click("#login");
+    await page.click("#loginFormSubmit");
     
     // Wait for either successful login (redirect) or error message
     try {
