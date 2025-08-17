@@ -2,7 +2,7 @@
 
 A Shields IO badge that displays your latest checked out library book from SWAN Libraries.
 
-![reading](https://img.shields.io/endpoint?url=https%3A%2F%2Fyour-domain.pages.dev%2Fapi%2Flibrary-badge&style=flat-square)
+![reading](https://img.shields.io/endpoint?url=https%3A%2F%2Flibrary-badge.pages.dev%2Fapi%2Flibrary-badge&style=flat-square)
 
 
 ## Setup
