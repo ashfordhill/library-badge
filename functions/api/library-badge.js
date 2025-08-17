@@ -64,9 +64,7 @@ export async function onRequestGet({ request, env }) {
     label: "borrowed",
     labelColor: "4A148C", // Dark purple for the left side
     message,
-    color: displayTitle ? "7B1FA2" : "inactive", // Light purple for the right side
-    logo: "gitbook", // GitBook icon as you chose
-    logoColor: "4682B4" // Steel Blue text as you chose
+    color: displayTitle ? "7B1FA2" : "inactive" // Light purple for the right side
   };
 
   return new Response(JSON.stringify(body), {
