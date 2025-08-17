@@ -60,7 +60,8 @@ async function testBadge() {
       labelColor: "4A148C", // Much darker purple for the left side
       message,
       color: displayTitle ? "7B1FA2" : "inactive", // Rich purple that complements Spotify green
-      logo: "bookstack" // Use SimpleIcons BookStack
+      logo: "bookstack", // Use SimpleIcons BookStack
+      logoColor: "7B1FA2" // Make the "borrowed" text the same color as right side background
     };
     
     console.log('🏷️  Badge JSON:');

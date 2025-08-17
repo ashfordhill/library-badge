@@ -1,12 +1,12 @@
 // Helper function to format title (truncate after ":")
-function formatTitle(title: string): string {
+function formatTitle(title) {
   if (!title) return title;
   const colonIndex = title.indexOf(':');
   return colonIndex > 0 ? title.substring(0, colonIndex).trim() : title;
 }
 
 // Helper function to format author (Last name, First initial)
-function formatAuthor(author: string): string {
+function formatAuthor(author) {
   if (!author) return author;
   
   // Handle "Last, First" format
@@ -32,15 +32,14 @@ function formatAuthor(author: string): string {
 }
 
 // Cloudflare Pages Function
-export const onRequestGet: PagesFunction = async ({ request, env }) => {
+export async function onRequestGet({ request, env }) {
   // Read the static file we just published
   const url = new URL(request.url);
   const jsonReq = new Request(new URL("/current.json", url).toString());
 
   // On Pages, ASSETS binding lets you fetch your static assets
-  // @ts-ignore env.ASSETS provided by CF
   const assetRes = await env.ASSETS.fetch(jsonReq);
-  let data: any = null;
+  let data = null;
   if (assetRes.ok) {
     try { 
       data = await assetRes.json(); 
@@ -63,17 +62,18 @@ export const onRequestGet: PagesFunction = async ({ request, env }) => {
   const body = {
     schemaVersion: 1,
     label: "borrowed",
-    labelColor: "4A148C", // Much darker purple for the left side
+    labelColor: "4A148C", // Dark purple for the left side
     message,
-    color: displayTitle ? "7B1FA2" : "inactive", // Rich purple that complements Spotify green
-    logo: "bookstack" // Use SimpleIcons BookStack
+    color: displayTitle ? "7B1FA2" : "inactive", // Light purple for the right side
+    logo: "gitbook", // GitBook icon as you chose
+    logoColor: "4682B4" // Steel Blue text as you chose
   };
 
   return new Response(JSON.stringify(body), {
     headers: {
       "Content-Type": "application/json",
-      "Cache-Control": "public, max-age=1800", // 30 min; tune as you like
+      "Cache-Control": "public, max-age=1800", // 30 min cache
       "Access-Control-Allow-Origin": "*"
     }
   });
-};
+}

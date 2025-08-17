@@ -6,35 +6,76 @@ A dynamic badge that displays your latest checked-out library book from SWAN Lib
 
 Replace `your-domain.pages.dev` with your actual Cloudflare Pages domain:
 
-### Flat (Default)
+### Usage
 ```markdown
 ![Library Badge](https://img.shields.io/endpoint?url=https://your-domain.pages.dev/api/library-badge)
 ```
-![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=bookstack&logoColor=white)
 
-### Flat Square
-```markdown
-![Library Badge](https://img.shields.io/endpoint?url=https://your-domain.pages.dev/api/library-badge&style=flat-square)
-```
-![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B2D26?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMSAwLTIgLjktMiAydjJjMCAuNTUuNDUgMSAxIDFzMS0uNDUgMS0xVjVoMTR2MmMwIC41NS40NSAxIDEgMXMxLS40NSAxLTFWNWMwLTEuMS0uOS0yLTItMnoiLz48cGF0aCBkPSJNMjAgOEg0Yy0uNTUgMC0xIC40NS0xIDF2MmMwIC41NS40NSAxIDEgMWgxNmMuNTUgMCAxLS40NSAxLTFWOWMwLS41NS0uNDUtMS0xLTF6Ii8+PHBhdGggZD0iTTE4IDEzSDZjLS41NSAwLTEgLjQ1LTEgMXY1YzAgMS4xLjkgMiAyIDJoMTBjMS4xIDAgMi0uOSAyLTJ2LTVjMC0uNTUtLjQ1LTEtMS0xeiIvPjwvc3ZnPg==)
+### Cyan/Cerulean Text Options
 
-### Plastic
-```markdown
-![Library Badge](https://img.shields.io/endpoint?url=https://your-domain.pages.dev/api/library-badge&style=plastic)
-```
-![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B2D26?style=plastic&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMSAwLTIgLjktMiAydjJjMCAuNTUuNDUgMSAxIDFzMS0uNDUgMS0xVjVoMTR2MmMwIC41NS40NSAxIDEgMXMxLS40NSAxLTFWNWMwLTEuMS0uOS0yLTItMnoiLz48cGF0aCBkPSJNMjAgOEg0Yy0uNTUgMC0xIC40NS0xIDF2MmMwIC41NS40NSAxIDEgMWgxNmMuNTUgMCAxLS40NSAxLTFWOWMwLS41NS0uNDUtMS0xLTF6Ii8+PHBhdGggZD0iTTE4IDEzSDZjLS41NSAwLTEgLjQ1LTEgMXY1YzAgMS4xLjkgMiAyIDJoMTBjMS4xIDAgMi0uOSAyLTJ2LTVjMC0uNTUtLjQ1LTEtMS0xeiIvPjwvc3ZnPg==)
+#### ReadTheDocs Icon
 
-### For The Badge
-```markdown
-![Library Badge](https://img.shields.io/endpoint?url=https://your-domain.pages.dev/api/library-badge&style=for-the-badge)
-```
-![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B2D26?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMSAwLTIgLjktMiAydjJjMCAuNTUuNDUgMSAxIDFzMS0uNDUgMS0xVjVoMTR2MmMwIC41NS40NSAxIDEgMXMxLS40NSAxLTFWNWMwLTEuMS0uOS0yLTItMnoiLz48cGF0aCBkPSJNMjAgOEg0Yy0uNTUgMC0xIC40NS0xIDF2MmMwIC41NS40NSAxIDEgMWgxNmMuNTUgMCAxLS40NSAxLTFWOWMwLS41NS0uNDUtMS0xLTF6Ii8+PHBhdGggZD0iTTE4IDEzSDZjLS41NSAwLTEgLjQ1LTEgMXY1YzAgMS4xLjkgMiAyIDJoMTBjMS4xIDAgMi0uOSAyLTJ2LTVjMC0uNTUtLjQ1LTEtMS0xeiIvPjwvc3ZnPg==)
+**Bright Cyan**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=readthedocs&logoColor=00FFFF)
 
-### Social
-```markdown
-![Library Badge](https://img.shields.io/endpoint?url=https://your-domain.pages.dev/api/library-badge&style=social)
-```
-![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B2D26?style=social&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMSAwLTIgLjktMiAydjJjMCAuNTUuNDUgMSAxIDFzMS0uNDUgMS0xVjVoMTR2MmMwIC41NS40NSAxIDEgMXMxLS40NSAxLTFWNWMwLTEuMS0uOS0yLTItMnoiLz48cGF0aCBkPSJNMjAgOEg0Yy0uNTUgMC0xIC40NS0xIDF2MmMwIC41NS40NSAxIDEgMWgxNmMuNTUgMCAxLS40NSAxLTFWOWMwLS41NS0uNDUtMS0xLTF6Ii8+PHBhdGggZD0iTTE4IDEzSDZjLS41NSAwLTEgLjQ1LTEgMXY1YzAgMS4xLjkgMiAyIDJoMTBjMS4xIDAgMi0uOSAyLTJ2LTVjMC0uNTUtLjQ1LTEtMS0xeiIvPjwvc3ZnPg==)
+**Deep Sky Blue**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=readthedocs&logoColor=00BFFF)
+
+**Cerulean**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=readthedocs&logoColor=007BA7)
+
+**Turquoise**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=readthedocs&logoColor=40E0D0)
+
+**Dark Turquoise**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=readthedocs&logoColor=00CED1)
+
+**Light Sea Green**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=readthedocs&logoColor=20B2AA)
+
+**Aqua**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=readthedocs&logoColor=00FFFF)
+
+**Medium Turquoise**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=readthedocs&logoColor=48D1CC)
+
+**Cadet Blue**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=readthedocs&logoColor=5F9EA0)
+
+**Steel Blue**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=readthedocs&logoColor=4682B4)
+
+#### GitBook Icon
+
+**Bright Cyan**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=gitbook&logoColor=00FFFF)
+
+**Deep Sky Blue**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=gitbook&logoColor=00BFFF)
+
+**Cerulean**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=gitbook&logoColor=007BA7)
+
+**Turquoise**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=gitbook&logoColor=40E0D0)
+
+**Dark Turquoise**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=gitbook&logoColor=00CED1)
+
+**Light Sea Green**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=gitbook&logoColor=20B2AA)
+
+**Aqua**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=gitbook&logoColor=00FFFF)
+
+**Medium Turquoise**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=gitbook&logoColor=48D1CC)
+
+**Cadet Blue**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=gitbook&logoColor=5F9EA0)
+
+**Steel Blue**
+![Library Badge](https://img.shields.io/badge/borrowed-The%20Wisdom%20of%20Morrie%20%E2%80%94%20Schwartz%2C%20M.-7B1FA2?labelColor=4A148C&logo=gitbook&logoColor=4682B4)
 
 ## ✨ Features
 

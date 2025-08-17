@@ -51,7 +51,7 @@
 
     <div class="endpoint">
         <h3>Raw Data:</h3>
-        <a href="/library.json" target="_blank">/library.json</a>
+        <a href="/current.json" target="_blank">/current.json</a>
     </div>
 
     <div id="status" class="status">
@@ -76,7 +76,7 @@
         }
 
         // Load current library data
-        fetch('/library.json')
+        fetch('/current.json')
             .then(response => response.json())
             .then(data => {
                 const status = document.getElementById('status');
