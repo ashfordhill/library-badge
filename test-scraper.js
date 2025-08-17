@@ -17,7 +17,7 @@ async function testScraper() {
   
   try {
     // Import and run the scraper
-    const { default: scraper } = await import('./scrape-swan.ts');
+    await import('./scrape-swan.js');
     console.log('✅ Scraper completed successfully');
     
     // Check if the JSON file was created

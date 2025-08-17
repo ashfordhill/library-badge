@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "scrape": "node scrape-swan.ts",
+    "scrape": "node scrape-swan.js",
     "build": "echo 'No build needed'"
   },
   "dependencies": {
