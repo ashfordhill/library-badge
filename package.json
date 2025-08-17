@@ -1,0 +1,16 @@
+{
+  "name": "library-badge",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "scrape": "node scrape-swan.ts",
+    "build": "echo 'No build needed'"
+  },
+  "dependencies": {
+    "playwright": "^1.45.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
