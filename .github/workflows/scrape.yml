@@ -53,5 +53,11 @@ jobs:
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add public/current.json public/history.json
-          git commit -m "update current book and history [skip ci]" || echo "no changes"
+          git commit -m "update current book and history" || echo "no changes"
           git push
+      
+      - name: Deploy Cloudflare Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

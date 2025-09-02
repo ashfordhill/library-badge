@@ -1,0 +1,17 @@
+name = "library-badge"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Route to your existing domain - this will replace the Cloudflare Pages function
+routes = [
+  { pattern = "library.ashhill.dev/api/library-badge", zone_name = "ashhill.dev" }
+]
+
+# The worker will also be available at: library-badge.your-subdomain.workers.dev for testing
+
+[env.production]
+name = "library-badge"
+
+[env.staging]
+name = "library-badge-staging"
