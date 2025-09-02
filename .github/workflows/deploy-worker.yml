@@ -2,10 +2,6 @@ name: Deploy Cloudflare Worker
 on:
   push:
     branches: [ main ]
-    paths:
-      - 'worker.js'
-      - 'wrangler.toml'
-      - 'public/current.json'
   workflow_dispatch: {}
 
 jobs:
@@ -19,8 +15,15 @@ jobs:
           node-version: 20
           cache: 'npm'
       - run: npm ci
+      - name: Debug wrangler config
+        run: |
+          echo "Checking wrangler.toml..."
+          cat wrangler.toml
+          echo "Checking worker.js exists..."
+          ls -la worker.js
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
