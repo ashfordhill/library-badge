@@ -1,0 +1,8 @@
+name = "library-badge"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Route to your existing domain - use this after fixing API token permissions
+routes = [
+  { pattern = "library.ashhill.dev/api/library-badge", zone_name = "ashhill.dev" }
+]

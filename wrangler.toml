@@ -2,7 +2,7 @@ name = "library-badge"
 main = "worker.js"
 compatibility_date = "2024-01-01"
 
-# Route to your existing domain - this will replace the Cloudflare Pages function
-routes = [
-  { pattern = "library.ashhill.dev/api/library-badge", zone_name = "ashhill.dev" }
-]
+# Custom domain route - uncomment after fixing API token permissions
+# routes = [
+#   { pattern = "library.ashhill.dev/api/library-badge", zone_name = "ashhill.dev" }
+# ]
