@@ -1,7 +1,13 @@
 {
-  "lastUpdated": "2025-09-09T08:08:09.498Z",
-  "totalBooks": 3,
+  "lastUpdated": "2025-10-05T08:07:32.826Z",
+  "totalBooks": 4,
   "books": [
+    {
+      "title": "The Tipping Point",
+      "author": "Gladwell, Malcolm",
+      "scrapedAt": "2025-10-04T08:07:31.166Z",
+      "archivedAt": "2025-10-05T08:07:32.826Z"
+    },
     {
       "title": "Sand Talk",
       "author": "Tyson Yunkaporta",
