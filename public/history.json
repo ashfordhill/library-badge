@@ -1,7 +1,13 @@
 {
-  "lastUpdated": "2025-10-28T03:11:52.115Z",
-  "totalBooks": 5,
+  "lastUpdated": "2025-10-28T08:08:47.969Z",
+  "totalBooks": 6,
   "books": [
+    {
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "scrapedAt": "2025-10-28T03:11:52.115Z",
+      "archivedAt": "2025-10-28T08:08:47.969Z"
+    },
     {
       "title": "Guts and genius : the story of three unlikely coaches who came to dominate the NFL in the '80s",
       "author": "Glauber, Bob",
