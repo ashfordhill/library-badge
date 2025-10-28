@@ -1,7 +1,13 @@
 {
-  "lastUpdated": "2025-10-05T08:07:32.826Z",
-  "totalBooks": 4,
+  "lastUpdated": "2025-10-28T03:11:52.115Z",
+  "totalBooks": 5,
   "books": [
+    {
+      "title": "Guts and genius : the story of three unlikely coaches who came to dominate the NFL in the '80s",
+      "author": "Glauber, Bob",
+      "scrapedAt": "2025-10-27T08:08:51.291Z",
+      "archivedAt": "2025-10-28T03:11:52.115Z"
+    },
     {
       "title": "The Tipping Point",
       "author": "Gladwell, Malcolm",
