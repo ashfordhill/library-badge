@@ -1,7 +1,13 @@
 {
-  "lastUpdated": "2026-01-11T01:54:02.516Z",
-  "totalBooks": 9,
+  "lastUpdated": "2026-01-14T17:11:11.505Z",
+  "totalBooks": 10,
   "books": [
+    {
+      "title": "The Five People You Meet in Heaven",
+      "author": "Mitch Albom",
+      "scrapedAt": "2026-01-13T08:06:23.942Z",
+      "archivedAt": "2026-01-14T17:11:11.505Z"
+    },
     {
       "title": "Influence is your superpower : the science of winning hearts, sparking change, and making good things happen",
       "author": "Chance, Zoe",
