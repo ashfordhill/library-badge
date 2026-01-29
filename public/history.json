@@ -1,7 +1,13 @@
 {
-  "lastUpdated": "2026-01-14T17:11:11.505Z",
-  "totalBooks": 10,
+  "lastUpdated": "2026-01-29T08:33:35.596Z",
+  "totalBooks": 11,
   "books": [
+    {
+      "title": "Wayne Gretzky",
+      "author": "Barry Wilner",
+      "scrapedAt": "2026-01-28T08:27:09.159Z",
+      "archivedAt": "2026-01-29T08:33:35.596Z"
+    },
     {
       "title": "The Five People You Meet in Heaven",
       "author": "Mitch Albom",
